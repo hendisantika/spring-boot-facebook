@@ -1,5 +1,6 @@
 package com.hendisantika.facebook.springbootfacebook.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.PagedList;
@@ -25,13 +26,16 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class FacebookController {
+    @Autowired
     private Facebook facebook;
+
+    @Autowired
     private ConnectionRepository connectionRepository;
 
-    public FacebookController(Facebook facebook, ConnectionRepository connectionRepository) {
-        this.facebook = facebook;
-        this.connectionRepository = connectionRepository;
-    }
+//    public FacebookController(Facebook facebook, ConnectionRepository connectionRepository) {
+//        this.facebook = facebook;
+//        this.connectionRepository = connectionRepository;
+//    }
 
     @RequestMapping(value = "feed", method = RequestMethod.GET)
     public String feed(Model model) {
