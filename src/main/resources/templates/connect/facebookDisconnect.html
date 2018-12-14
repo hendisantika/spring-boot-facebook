@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>Spring Boot Facebook Application</title>
+</head>
+
+<body>
+<h3>Disconnect from Facebook: </h3>
+
+<form action="/connect/facebook" method="post">
+    <div class="formInfo">
+        <p>
+            Spring Social Showcase is not connected to your Facebook account.
+            Click the button if you wish to disconnect.
+        </p>
+    </div>
+    <button type="submit">Disconnect</button>
+    <input name="_method" type="hidden" value="delete"/>
+</form>
+</body>
+
+</html>
