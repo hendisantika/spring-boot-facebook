@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Facebook Feed</title>
+</head>
+<body>
+<h3>Welcome, to Spring Boot Facebook Example</h3>
+
+<h4>Facebook Friends:</h4>
+
+<div th:each="message:${messages}">
+    <b th:text="${title}"></b>
+    <p th:text="${message}"></p>
+    <hr/>
+</div>
+
+<h3>You can login to facebook <a href="/connect/facebook">here</a>.</h3>
+
+</body>
+</html>
