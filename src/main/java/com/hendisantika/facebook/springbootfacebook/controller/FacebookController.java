@@ -8,9 +8,10 @@ import org.springframework.social.facebook.api.Post;
 import org.springframework.social.facebook.api.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,7 +38,14 @@ public class FacebookController {
 //        this.connectionRepository = connectionRepository;
 //    }
 
-    @RequestMapping(value = "feed", method = RequestMethod.GET)
+    @GetMapping
+    String index(Model model) {
+        model.addAttribute("title", "Spring Boot Facebook! ");
+        model.addAttribute("messages", new Date());
+        return "index";
+    }
+
+    @GetMapping("feed")
     public String feed(Model model) {
 
         if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
@@ -51,7 +59,7 @@ public class FacebookController {
         return "feed";
     }
 
-    @RequestMapping(value = "friends", method = RequestMethod.GET)
+    @GetMapping("friends")
     public String friends(Model model) {
 
         if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
@@ -64,5 +72,10 @@ public class FacebookController {
         model.addAttribute("friends", friends);
 
         return "friends";
+    }
+
+    @GetMapping("logout")
+    public String logout(Model model) {
+        return "/connect/facebookDisconnect";
     }
 }
